@@ -27,42 +27,52 @@ controlFrame.grid(column=1, row=1, sticky="WE")
 controlFrame.columnconfigure(0, weight=1);
 
 ## Define GUI Variables and content options.
-whosTurnPossibilities = ['Player 1\'s turn','Player 2\'s turn','Initialize game']
-whosTurn = StringVar(value=whosTurnPossibilities[2])
+stateDescriptionPossibilities = ['Player 1\'s turn','Player 2\'s turn','Initialize game']
+stateDescription = StringVar(value=stateDescriptionPossibilities[2])
+
+topLeft = StringVar(value="")
+topMiddle = StringVar(value="")
+topRight = StringVar(value="")
+middleLeft = StringVar(value="")
+middleMiddle = StringVar(value="")
+middleRight = StringVar(value="")
+bottomLeft = StringVar(value="")
+bottomMiddle = StringVar(value="")
+bottomRight = StringVar(value="")
 
 ## Define Widgets
-turnTracker = ttk.Label(mainFrame, textvariable=whosTurn)
+turnTracker = ttk.Label(mainFrame, textvariable=stateDescription)
 turnTracker.grid(column=0,row=0)
 
 resetButton = ttk.Button(controlFrame, text="Reset", command=onReset)
 resetButton.grid(column=1, row=0)
 
     ## Define game buttons
-topLeftButton = ttk.Button(gameFrame)
+topLeftButton = ttk.Button(gameFrame, textvariable=topLeft)
 topLeftButton.grid(row=0,column=0)
 
-topMiddleButton = ttk.Button(gameFrame)
+topMiddleButton = ttk.Button(gameFrame, textvariable=topMiddle)
 topMiddleButton.grid(row=0,column=1)
 
-topRightButton = ttk.Button(gameFrame)
+topRightButton = ttk.Button(gameFrame, textvariable=topRight)
 topRightButton.grid(row=0,column=2)
 
-middleLeftButton = ttk.Button(gameFrame)
+middleLeftButton = ttk.Button(gameFrame, textvariable=middleLeft)
 middleLeftButton.grid(row=1,column=0)
 
-middleMiddleButton = ttk.Button(gameFrame)
+middleMiddleButton = ttk.Button(gameFrame, textvariable=middleMiddle)
 middleMiddleButton.grid(row=1,column=1)
 
-middleRightButton = ttk.Button(gameFrame)
+middleRightButton = ttk.Button(gameFrame, textvariable=middleRight)
 middleRightButton.grid(row=1,column=2)
 
-bottomLeftButton = ttk.Button(gameFrame)
+bottomLeftButton = ttk.Button(gameFrame, textvariable=bottomLeft)
 bottomLeftButton.grid(row=2,column=0)
 
-bottomMiddleButton = ttk.Button(gameFrame)
+bottomMiddleButton = ttk.Button(gameFrame, textvariable=bottomMiddle)
 bottomMiddleButton.grid(row=2,column=1)
 
-bottomRightButton = ttk.Button(gameFrame)
+bottomRightButton = ttk.Button(gameFrame, textvariable=bottomRight)
 bottomRightButton.grid(row=2,column=2)
 
 root.mainloop()
