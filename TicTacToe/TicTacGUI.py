@@ -2,10 +2,25 @@ import TicTacToeBoard as TTT
 from tkinter import *
 from tkinter import ttk
 
+
+## Initialize Board ##
+
+board = TTT.TicTacToeBoard()
+
 ## Define control methods ##
 
 def onReset():
     print("Reset button invoked.")
+
+def onStart():
+    print("Start button invoked.")
+
+def onSymbolUpdate(player:int):
+    if player == 1:
+        isAccepted = board.changeSym(1, player1SymbolText.get())
+        if not isAccepted:
+            player1SymbolText
+
 
 ############################
 
@@ -27,7 +42,8 @@ controlFrame.grid(column=1, row=1, sticky="WE")
 controlFrame.columnconfigure(0, weight=1);
 
 ## Define GUI Variables and content options.
-stateDescriptionPossibilities = ['Player 1\'s turn','Player 2\'s turn','Initialize game']
+stateDescriptionPossibilities = ['Player 1\'s turn','Player 2\'s turn','Initialize game',
+    'Player 1 Wins!','Player 2 Wins!','Draw']
 stateDescription = StringVar(value=stateDescriptionPossibilities[2])
 
 topLeft = StringVar(value="")
@@ -45,9 +61,34 @@ turnTracker = ttk.Label(mainFrame, textvariable=stateDescription)
 turnTracker.grid(column=0,row=0)
 
 resetButton = ttk.Button(controlFrame, text="Reset", command=onReset)
-resetButton.grid(column=1, row=0)
+resetButton.grid(column=0, row=0)
+
+player1EntryFrame = ttk.Frame(controlFrame)
+player1EntryFrame.grid(column=0, row=1)
+
+player1SymbolLabel = ttk.Label(player1EntryFrame, text="Player 1 Symbol:")
+player1SymbolLabel.grid(column=0, row=0)
+
+player1SymbolText = ttk.Entry(player1EntryFrame)
+player1SymbolText.grid(column=1, row=0)
+
+player2EntryFrame = ttk.Frame(controlFrame)
+player2EntryFrame.grid(column=0, row=2)
+
+player2SymbolLabel = ttk.Label(player2EntryFrame, text="Player 2 Symbol:")
+player2SymbolLabel.grid(column=0, row=0)
+
+player2SymbolText = ttk.Entry(player2EntryFrame)
+player2SymbolText.grid(column=1, row=0)
+
+startButton = ttk.Button(controlFrame, text="Start", command=onStart)
+startButton.grid(column=0, row=3)
+
+incorrectSymbolLabel = ttk.Label(controlFrame, text="Please set the player symbols correctly")
+incorrectSymbolLabel.grid(column=0, row=4)
 
     ## Define game buttons
+
 topLeftButton = ttk.Button(gameFrame, textvariable=topLeft)
 topLeftButton.grid(row=0,column=0)
 
@@ -74,5 +115,6 @@ bottomMiddleButton.grid(row=2,column=1)
 
 bottomRightButton = ttk.Button(gameFrame, textvariable=bottomRight)
 bottomRightButton.grid(row=2,column=2)
+
 
 root.mainloop()
