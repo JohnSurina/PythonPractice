@@ -100,8 +100,19 @@ def ticTacMove(location:str):
     else:
         incorrectMoveLabel.grid_remove()
         synchronizeBoardModelWithViewModel()
-        stateDescription.set(nextState)
-        return(True)
+    
+    isWon,winner = board.isWon()
+    if isWon:
+        if winner == 1:
+            nextState = stateDescriptionPossibilities[3]
+        elif winner == 2:
+            nextState = stateDescriptionPossibilities[4]
+        else:
+            nextState = stateDescriptionPossibilities[5]
+        for button in buttonTuple:
+            button.state(['disabled'])
+    stateDescription.set(nextState)
+    return(True)
 
 ############################
 
