@@ -35,7 +35,7 @@ class TicTacToeBoard:
         print("+-----------+")
 
     def resetBoard(s):
-        s.boardVals = s._boardVals_init
+        s.boardVals = s._boardVals_init.copy()
 
     def changeSym(self, ref:int, sym:str) -> bool:
         ''' changes the symbol that a player uses for indicating their moves on
@@ -95,7 +95,7 @@ class TicTacToeBoard:
             print("Invalid position")
             return(False)
 
-    def player2move(self, preSlot:str):
+    def player2move(self, preSlot:str) -> bool:
         ''' This Function takes the player 1 symbol and puts it into
         the slot given. If the slot is valid, the method returns true
         and puts the player 1 symbol into the table slot specified,
@@ -134,19 +134,8 @@ class TicTacToeBoard:
             return(False)
 
     def isWon(s):
-        # Case: Draw
-        if (s.boardVals["p11"] != " " and 
-            s.boardVals["p12"] != " " and
-            s.boardVals["p13"] != " " and
-            s.boardVals["p21"] != " " and
-            s.boardVals["p22"] != " " and
-            s.boardVals["p23"] != " " and
-            s.boardVals["p31"] != " " and
-            s.boardVals["p32"] != " " and
-            s.boardVals["p33"] != " "):
-            return((True,0))
         # Case: vertical left
-        elif s.boardVals["p13"] == s.boardVals["p12"] == s.boardVals["p11"] and s.boardVals["p13"] != " ":
+        if s.boardVals["p13"] == s.boardVals["p12"] == s.boardVals["p11"] and s.boardVals["p13"] != " ":
             if s.boardVals["p13"] == s.p1_sym:
                 playerWinner = 1
             else:
@@ -201,5 +190,16 @@ class TicTacToeBoard:
             else:
                 playerWinner = 2
             return((True, playerWinner))
+        # Case: Draw
+        if (s.boardVals["p11"] != " " and 
+            s.boardVals["p12"] != " " and
+            s.boardVals["p13"] != " " and
+            s.boardVals["p21"] != " " and
+            s.boardVals["p22"] != " " and
+            s.boardVals["p23"] != " " and
+            s.boardVals["p31"] != " " and
+            s.boardVals["p32"] != " " and
+            s.boardVals["p33"] != " "):
+            return((True,0))
         else:
             return((False,None))
