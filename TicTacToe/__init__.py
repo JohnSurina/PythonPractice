@@ -1,1 +1,1 @@
-from . import Game
+from . import TicTacToeBoard,Game,TicTacGUI

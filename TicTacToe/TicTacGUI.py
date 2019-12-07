@@ -1,5 +1,5 @@
 #!/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/bin/python3.7
-import TicTacToeBoard as TTT
+from . import TicTacToeBoard as TTT
 from tkinter import *
 from tkinter import ttk
 
