@@ -126,7 +126,7 @@ class TicTacToeBoard:
         elif (slot in self._bottomMiddle) and (self.boardVals["p21"] == " "):
             self.boardVals["p21"] = self.p2_sym
             return(True)
-        elif (slot in self._bottomRight) and (self.boardVals["p13"] == " "):
+        elif (slot in self._bottomRight) and (self.boardVals["p31"] == " "):
             self.boardVals["p31"] = self.p2_sym
             return(True)
         else:

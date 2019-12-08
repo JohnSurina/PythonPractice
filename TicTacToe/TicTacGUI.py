@@ -21,6 +21,7 @@ def onReset():
     board.resetBoard()
     synchronizeBoardModelWithViewModel()
     stateDescription.set(stateDescriptionPossibilities[2])
+    incorrectMoveLabel.grid_remove()
 
 def onStart():
     print("Start button invoked.")
@@ -231,5 +232,6 @@ buttonTuple = (topLeftButton,    topMiddleButton,    topRightButton,
 for button in buttonTuple:
     button.state(['disabled'])
 
-# Run the application
-root.mainloop()
+def play():
+    '''Run the application'''
+    root.mainloop()
