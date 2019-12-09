@@ -13,11 +13,24 @@ def update():
     timeDeltaMinutes = trunc(remainder//60)
 
     timeDeltaSeconds = trunc(timeDeltaSeconds - ( timeDeltaHours * 3600 + timeDeltaMinutes * 60 ))
-    
-    timeDeltaFormatted = 'Time since start time\nHr: {0}\nMin: {1}\nSec: {2}'.format(timeDeltaHours, timeDeltaMinutes, timeDeltaSeconds)
+
+    timeDeltaFormatted = 'Time since start time\nHr: {0}\nMin: {1}\nSec: {2}\n\nPut in timesheet: {0}.{3}Hrs'.format(
+        timeDeltaHours, timeDeltaMinutes, timeDeltaSeconds, calcTimePartial(timeDeltaMinutes))
     time.set(timeDeltaFormatted)
 
     root.after(1000, func=update) # continue updating
+
+def calcTimePartial(minutes):
+    if minutes<15:
+        return(0)
+    elif minutes<30:
+        return(25)
+    elif minutes<45:
+        return(5)
+    elif minutes<60:
+        return(75)
+    else:
+        raise Exception()
 
 def setTime():
     mTracker.createStartPoint()
