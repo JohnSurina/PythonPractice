@@ -1,0 +1,1 @@
+locRef = __spec__.origin
