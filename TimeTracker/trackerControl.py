@@ -20,6 +20,24 @@ class trackerControl():
         dataFile = open(s.dataLocation,mode = 'r')
         print(dataFile.read())
         dataFile.close()
+    
+    def forceStartPoint(s, Year = datetime.datetime.now().year,
+                           Month = datetime.datetime.now().month,
+                           Day = datetime.datetime.now().day,
+                           Hour = datetime.datetime.now().hour,
+                           Minute = datetime.datetime.now().minute):
+        timeToForce = datetime.datetime(
+            year=Year,
+            month=Month,
+            day=Day,
+            hour=Hour,
+            minute=Minute
+        )
+
+        dataFile = open(s.dataLocation,mode = 'w')
+        dataFile.write(repr(timeToForce))
+        dataFile.close()
+
 
     def timeDeltaCurrent(s):
         dataFile = open(s.dataLocation,mode = 'r')
